@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>saleCent-list-of-superMalls</title>
+    <link
+      rel="stylesheet"
+      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/css/style.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="containerDiscountMP">
+      <div class="content">
+        <nav class="navMenu">
+          <ul class="textMenu">
+            <div class="container-menu">
+              <img
+                class="mall-pict"
+                src="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/images/superstoreMarker.png"
+                alt=""
+              />
+              <li class="textMenu-link-shops">
+                <a href="../navPannelsuperMals/navPannelStores.html" class="link-sale-amenities" id="linkStore"
+                  >ТОРГОВЫЕ ЦЕНТРЫ</a
+                >
+                <ul class="subMenu">
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/asia-mol/asiaMol.html"
+                      >АЗИЯ-МОЛ</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/ai-mol/aimol.html"
+                      >АЙ-МОЛ</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/beta-stores/betaStores.html"
+                      >БЕТА-СТОРЕС
+                    </a>
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/beta-stores2/betaStores-2.html"
+                      >БЕТА-СТОРЕС 2</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/dordoiplaza/dordoi-Plaza.html"
+                      >ДОРДОЙ ПЛАЗА</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/cum-store/cumStore.html"
+                      >ЦУМ</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/gum-store/gum.html"
+                      >ГУМ</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/bishkek-park/bishkek-park.html"
+                      >БИШКЕК ПАРК
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </div>
+            <div class="container-menu">
+              <img
+                class="shop-pict"
+                src="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/images/shopsmarket.png"
+                alt=""
+              />
+              <li class="textMenu-link-shops text-shop">
+                <a href="#" class="link-sale-amenities">МАГАЗИНЫ</a>
+              </li>
+            </div>
+            <div class="container-menu">
+              <img
+                class="furniture-pict"
+                src="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/images/furniture.png"
+                alt=""
+              />
+              <li class="textMenu-link-shops fur-text">
+                <a href="#" class="link-sale-amenities">МЕБЕЛЬ</a>
+              </li>
+            </div>
+            <div class="container-menu">
+              <img
+                class="supermarkets-pict"
+                src="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/images/supermarkets.png"
+                alt=""
+              />
+              <li class="textMenu-link-shops superM-text">
+                <a href="#" class="link-sale-amenities">СУПЕРМАРКЕТЫ</a>
+              </li>
+            </div>
+             <div class="btnReg">
+                        <!-- Button reg modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Зарегестрироваться
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Окно регистрации</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="mb-3">
+    <label for="login" class="form-label">Enter Your login/ введите  ваш логи</label>
+    <input type="text" class="form-control" placeholder="my login"  id="login" >
+    
+  </div>
+  
+  <div class="mb-3">
+    <label for="password" class="form-label">My Password</label>
+    <input type="password" class="form-control"  placeholder="my password" id="password">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control"  placeholder="repeat previous password" id="passwordR">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">My Email address</label>
+    <input type="email" class="form-control" id="email" placeholder="my login" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  
+  
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">выйти</button>
+        <button type="button" class="btn btn-primary">Зарегестрироваться</button>
+      </div>
+    </div>
+  </div>
+</div>
+                    </div>
+                    <div class="bntEnter">
+                        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Войти
+</button> 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Окно авторизации</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="mb-3">
+    <label for="login" class="form-label">Enter Your login/ введите  ваш логи</label>
+    <input type="text" class="form-control" placeholder="my login"  id="login" >
+    
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control"  placeholder="my password" id="password">
+  </div>
+  
+  
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">выйти</button>
+        <button type="button" class="btn btn-primary">Войти</button>
+      </div>
+    </div>
+  </div>
+</div>
+                    </div>
+          </ul>
+          <div class="container-cotalog-searchPannel">
+            <div class="leftSide-pannel">
+              <span class="catalog">КАТАЛОГ:</span>
+              <div class="searchSymbl-container">
+                <a href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalog.html"
+                  ><img
+                    src="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/images/searchSyml 6.png"
+                    alt=""
+                    class="symblS"
+                /></a>
+              </div>
+            </div>
+            <div class="rightSide-pannel">
+              <div class="searchPannel">
+                <input
+                  class="searchLine widthLine"
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Я ищу.."
+                />
+                <div class="seachSymbl-container">
+                  <img
+                    src="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/images/searchSmbl.png"
+                    alt=""
+                    class="pngFile"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="imageGallery">
+         
+          </div>
+          <div class="imgContainer">
+            <div class="aimalCenter superMales ">
+              <div class="images">
+                <a
+                  href="\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\ai-mol\aimol.html"
+                  class=""
+                  ><img
+                    class="photoSaleCenter storesCentresPhoto"
+                    src="https://data.kaktus.media/image/big/2019-05-20_13-46-53_854369_w.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="storeContainer">
+                <div class="aiMallContainer">
+                  <span class="aimallMallAddress storeCentresDetails" id="">
+                    г.Бишкек пр.Чынгыза Айтматова 3
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="asiaMallL superMales ">
+              <div class="images">
+                <a
+                  href="\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\asia-mol\asiaMol.html"
+                  class=""
+                >
+                  <img
+                    class="asiaMallPict storesCentresPhoto"
+                    src="https://bubble.kg/wp-content/uploads/2018/05/Asia-Mall-Bishkek.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="storeContainer">
+               
+                <div class="asiamallContainer">
+                  <span class="asiamallAdress storeCentresDetails" id="">
+                    г.Бишкек пр.Мира3 Asia Mall 
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="betaStoresCenter superMales ">
+              <div class="images">
+                <a
+                  href="\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\beta-stores\betaStores.html"
+                  class=""
+                >
+                  <img
+                    class="betaStoresPhoto storesCentresPhoto"
+                    src="https://www.be-in.ru/media/beingallery/uploads/mall/2016/10/27/beta-stores-1-bishkek.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="storeContainer">
+                <div class="betaStoresContainer">
+                  <span class="betaStoresAddress storeCentresDetails" id="">
+                    г.Бишкек пр.Чуй 150а
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="betaStores2Center superMales ">
+              <div class="images">
+                <a href="\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\beta-stores2\betaStores-2.html" class="">
+                  <img
+                    class="photoBetaStores2 storesCentresPhoto"
+                    src="https://www.be-in.ru/media/beingallery/uploads/mall/2016/10/27/beta-stores-2-bishkek.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              
+              <div class="storeContainer">
+                <div class="betastores2Container">
+                  <span class="betaStores2Address storeCentresDetails" id="">
+                    г.Бишкек пр.Юнусалиева 122/2
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bishkekParkCenter superMales">
+              <div class="images">
+                <a
+                  href="\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\bishkek-park\bishkek-park.html"
+                  class=""
+                >
+                  <img
+                    class="bishkekParkPhoto storesCentresPhoto"
+                    src="https://c1.vgtstatic.com/thumb/2/2/223423-v1-xl/bishkek-park-tallest-buildings-in-kyrgyzstan-under-construction.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="storeContainer">
+               
+                <div class="bishkekparkLocation">
+                  <span class="bishParkadres storeCentresDetails" id="">
+                    г.Бишкек пр.Киевская 148
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cumStore superMales ">
+              <div class="images">
+                <a
+                  href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\cumStore.html"
+                  class=""
+                >
+                  <img
+                    class="cumPhoto storesCentresPhoto"
+                    src="https://www.vector-ap.ru/upload/iblock/f13/aichurek-min.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="storeContainer">
+                
+                <div class="cumContainer storeCentresDetails">
+                  <span class="cumAddress" id="">
+                    г.Бишкек пр.Чуй 155
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="dordoiPlazaStore superMales">
+              <div class="images">
+                <a
+                  href="\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\dordoiplaza\dordoi-Plaza.html"
+                  class=""
+                >
+                  <img
+                    class="dordoiPlazaPhoto storesCentresPhoto"
+                    src="https://www.akchabar.kg/media/news/1d018325-bb5a-41db-8e32-46dce8bd3e0f.jpg.850x445_q82_crop.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="storeContainer">
+                
+                <div class="dordoiPlazaContainer">
+                  <span class="dordoiPlazaAddress storeCentresDetails" id="">
+                    г.Бишкек пр.Ибраимова 115
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="gumStore superMales">
+              <div class="images">
+                <a
+                  href="\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\gum-store\gum.html"
+                  class=""
+                >
+                  <img
+                    class="gumStorePhoto storesCentresPhoto"
+                    src="https://24.kg/files/media/31/31688.jpg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="storeContainer">
+               
+                <div class="gumStoreContainer storeCentresDetails">
+                  <span class="gumStoreAddress" id="">
+                    г.Бишкек пр.Чуй 92
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

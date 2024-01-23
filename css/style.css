@@ -1,0 +1,861 @@
+.containerDiscountMP {
+  background-color: beige;
+  width: 1215px;
+  /*height: 1123px;*/
+  border: 1px solid brown;
+  margin: 0 auto;
+}
+
+.btnReg {
+  width: auto;
+  height: auto;
+  margin: 30 px -40 px;
+}
+.content {
+  width: 95%;
+  border: 1px solid red;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  /*height: 1088px;*/
+}
+
+.navMenu {
+  border: 1px solid #9a9a93;
+  width: 99%;
+  margin: 0 auto;
+  background-color: grey;
+}
+
+.textMenu {
+  width: 99%;
+  height: auto;
+  background-color: red;
+  border: 1px solid purple;
+  margin: 0 auto;
+  display: flex;
+}
+
+.container-menu {
+  width: 156px;
+  height: 93px;
+  border: 1px solid purple;
+  margin: 2px 26px;
+}
+
+.mall-pict {
+  border: 1px solid black;
+  width: 47px;
+  justify-content: center;
+  margin-left: 45px;
+  border-radius: 34px;
+}
+
+.shop-pict {
+  border: 1px solid black;
+  width: 53px;
+  justify-content: center;
+  margin-left: 45px;
+}
+
+.furniture-pict {
+  border: 1px solid black;
+  width: 64px;
+  justify-content: center;
+  margin-left: 45px;
+}
+
+.supermarkets-pict {
+  border: 1px solid black;
+  width: 47px;
+  justify-content: center;
+  margin-left: 45px;
+  border-radius: 34px;
+}
+
+.text-shop {
+  margin-left: 26px;
+}
+
+.fur-text {
+  margin-left: 49px;
+}
+
+.superM-text {
+  margin-left: 17px;
+}
+
+.bntEnter {
+  margin: 30 px 41 px;
+}
+
+.logIn {
+  font-size: 20px;
+  font-family: monospac;
+  color: black;
+  background: #e9e4f0;
+  text-decoration: none;
+  list-style: none;
+  padding: 8px 25px;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.container-cotalog-searchPannel {
+  width: 99%;
+  border: 1px solid green;
+  margin: 0 auto;
+  display: flex;
+  background-color: red;
+}
+
+.leftSide-pannel {
+  border: 1px solid lightblue;
+  width: 20%;
+  display: flex;
+  margin: 9px 73px;
+}
+
+.catalog {
+  font-size: 20px;
+}
+
+.searchSymbl-container {
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.searchSymbl-container:hover {
+  background-color: black;
+}
+
+.symblS {
+  margin: 2px 11px;
+}
+
+.rightSide-pannel {
+  border: 1px solid black;
+  width: 51%;
+  margin-left: -6%;
+}
+
+.searchPannel {
+  display: flex;
+  height: 34px;
+  margin: 10px 0px;
+}
+
+.seachSymbl-container {
+  border: 1px solid black;
+  background-color: #c2baba;
+  z-index: 1;
+  margin-left: -32px;
+  width: 34px;
+  height: 32px;
+}
+
+.searchLine {
+  width: 88%;
+  border-radius: 14px;
+  position: relative;
+}
+
+.about-goods,
+.productTranscription {
+  width: 219px;
+  height: 96px;
+  border: 1px solid grey;
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 1%;
+  margin-top: 1%;
+}
+
+.product-image {
+  width: 197px;
+  height: 306px;
+  border: 3px solid black;
+  margin: 9px 14px;
+}
+
+.imageGallery {
+  width: 99%;
+  height: auto;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.imgContainer {
+  width: 99%;
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 27px 38px 60px 87px;
+  /*height: 98%;*/
+  margin: 0 auto;
+}
+
+.product-photo {
+  width: 223px;
+  height: 201px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.discount-number {
+  width: 43px;
+  height: 25px;
+  color: red;
+  border: 1px solid black;
+}
+
+.discount {
+  width: 43px;
+  height: 25px;
+  border: 1px solid black;
+}
+
+.priceNow {
+  width: 78px;
+  height: 22px;
+  border: 1px solid black;
+  margin-left: 2px;
+}
+
+.priceWas {
+  width: 94px;
+  height: 22px;
+  border: 1px solid black;
+  text-decoration: line-through;
+}
+
+.underwear1:hover {
+  border-color: blue;
+}
+
+.underwear2:hover {
+  border-color: blue;
+}
+
+.underwear3:hover {
+  border-color: blue;
+}
+
+.underwear4:hover {
+  border-color: blue;
+}
+
+.underwear5:hover {
+  border-color: blue;
+}
+
+.underwear6:hover {
+  border-color: blue;
+}
+
+.underwear7:hover {
+  border-color: blue;
+}
+
+.underwear8:hover {
+  border-color: blue;
+}
+
+.brand {
+  width: 70px;
+  height: 29px;
+  border: 1px solid black;
+  margin-left: 3px;
+}
+
+.brandName {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(170, 166, 166);
+}
+
+.itemType {
+  width: 107px;
+  height: 29px;
+  border: 1px solid black;
+  margin-left: 2px;
+}
+
+.typeOfItem {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(170, 166, 166);
+}
+
+.whereIsSell {
+  width: 208px;
+  height: 29px;
+  border: 1px solid black;
+  margin-left: 2px;
+}
+
+.salesBuilding {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(39, 50, 209);
+}
+
+.currentPriceItem {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.previousPriceItem {
+  font-size: 31px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+
+.logIn:hover {
+  background: black;
+  color: white;
+}
+
+.textMenu-link-shops {
+  list-style: none;
+  position: relative;
+}
+
+.link-sale-amenities {
+  text-decoration: none;
+  transition: all 0.5s;
+  color: black;
+}
+
+.subMenu {
+  overflow: scroll;
+  overflow-x: hidden;
+  margin-left: -71px;
+  display: none;
+  width: 182px;
+  position: absolute;
+  margin-top: 7px;
+}
+
+.textSub {
+  text-decoration: none;
+  color: black;
+}
+
+.subMenu .sub-menu {
+  list-style: none;
+  background-color: rgb(243, 241, 241);
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+}
+
+.textMenu #linkStore:hover {
+  color: rgb(39, 79, 189);
+  transition: 0.5s;
+}
+
+.textMenu :hover .subMenu {
+  display: block;
+}
+/* .subUnderwear{}
+.underwearCloths{
+  display: none;
+}
+.trousers{
+  display: none;
+}
+.outerwearClothes{
+  display: none;
+}
+.productList:hover .subUnderwear {
+  display: inline-block;
+} */
+
+.productList:hover {
+  background-color: rgb(199, 194, 194);
+  color: white;
+}
+.textSub:hover {
+  background-color: blue;
+  color: white;
+}
+
+.butiquePhoto,
+.product-image {
+  width: 229px;
+  height: 338px;
+  border: 3px solid black;
+  margin: 11px 9px;
+}
+
+.offPriceStore:hover {
+  border-color: blue;
+}
+
+.defactoStore:hover {
+  border-color: blue;
+}
+
+.keddoStrore:hover {
+  border-color: blue;
+}
+
+.pentiStore:hover {
+  border-color: blue;
+}
+
+.handPhones:hover {
+  border-color: blue;
+}
+
+.nandWatches:hover {
+  border-color: blue;
+}
+
+.acustic:hover {
+  border-color: blue;
+}
+
+.earings:hover {
+  border-color: blue;
+}
+
+.clothes1:hover {
+  border-color: blue;
+}
+
+.clothes2:hover {
+  border-color: blue;
+}
+
+.clothes3:hover {
+  border-color: blue;
+}
+
+.clothes4:hover {
+  border-color: blue;
+}
+
+.clothes5:hover {
+  border-color: blue;
+}
+
+.clothes6:hover {
+  border-color: blue;
+}
+
+.clothes8:hover {
+  border-color: blue;
+}
+
+.clothes7:hover {
+  border-color: blue;
+}
+
+.store,
+.photoUnderwear,
+.photoClothes {
+  width: 224px;
+  height: 203px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.storeDescription,
+.productTranscription {
+  width: 224px;
+  height: 131px;
+  border: 1px solid grey;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.information {
+  width: 60px;
+  height: 22px;
+  border: 1px solid black;
+  margin-left: 1px;
+}
+
+.storeName {
+  font-size: 13px;
+  font-weight: 500;
+  color: gray;
+}
+
+.sellingWhat {
+  width: 207px;
+  height: 48px;
+  border: 1px solid black;
+  margin-left: 1px;
+}
+
+.whatSelling {
+  font-size: 13px;
+  font-weight: 500;
+  color: gray;
+}
+
+.beta-stores-Tittle,
+.beta-stores2-Tittle,
+.asia-moleTittle,
+.aimolTittle,
+.dordoiPlaza-Tittle,
+.cum-Tittle,
+.gum-Tittle,
+.bishkekParkTittle {
+  border: 1px solid black;
+  width: 100%;
+  height: 168px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.beta-stores-Logo,
+.beta-stores2-Logo,
+.asia-moleLogo,
+.aimolLogo,
+.dordoiPlaza-Logo,
+.cum-Logo,
+.gum-Logo,
+.bishkekParkLogo {
+  width: 258px;
+  height: 111px;
+  margin: 28px 288px;
+}
+
+.beta-stores-Location,
+.beta-stores2-Location,
+.aimolLocation,
+.asia-moleLocation,
+.dordoiPlaza-Location,
+.cum-Location,
+.gum-Location,
+.bishkekParkLocation {
+  width: 403px;
+  height: 89px;
+  border: 1px solid black;
+  margin: 38px -278px;
+}
+
+.beta-stores-Address,
+.asia-moleAddress,
+.aimolAddress,
+.dordoiPlaza-Address,
+.cum-Address,
+.gumAddress,
+.bishkekParkAddress {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.goodsDescriptions {
+  width: 219px;
+  height: 50px;
+  border: 1px solid black;
+  margin-top: -8px;
+}
+
+.productPhoto {
+  width: 446px;
+  height: 515px;
+  border: 2px solid grey;
+}
+
+.discountLeft {
+  width: 305px;
+  border: 2px solid grey;
+  margin: 11px 120px;
+}
+
+.text {
+  font-size: 17px;
+  font-weight: 500;
+  color: grey;
+  width: 19px;
+  border: 1px solid black;
+}
+
+.time-left {
+  font-size: 18px;
+  font-weight: 500;
+  color: whitesmoke;
+  background-color: red;
+  border-radius: 30px;
+}
+
+.discr-product-container {
+  width: 55%;
+  border: 1px solid black;
+}
+
+.about-product {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.product-good-info {
+  width: 474px;
+  border: 1px solid black;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+.current_cost {
+  font-size: 18px;
+  color: gray;
+  font-weight: 500;
+}
+
+.past_price {
+  font-size: 18px;
+  color: gray;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+
+.dicount_given {
+  font-size: 18px;
+  font-weight: 500;
+  color: whitesmoke;
+  background-color: red;
+  border-radius: 30px;
+}
+
+.title-of-descr {
+  font-size: 17px;
+  font-weight: 500;
+  color: gray;
+}
+
+.nameOfTitle {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.whereItSell {
+  font-size: 20px;
+  font-weight: 700;
+}
+.product-photoBig {
+  width: 439px;
+  height: 504px;
+  margin: 3px 1px;
+}
+.storesCentresPhoto {
+  /*margin: 0px -1px;*/
+  border: 1px solid red;
+  width: 197px;
+  height: 200px;
+}
+.storeContainer {
+  margin: 1 px 16 px;
+  width: 200 px;
+  height: 50 px;
+  border: 1 px solid black;
+  font-size: 16px;
+  font-weight: 500;
+}
+.superMales {
+  width: 205px;
+  height: auto;
+  border: 4px solid grey;
+  margin: 17px 23px;
+}
+.aimalCenter:hover {
+  border-color: blue;
+}
+.asiaMallL:hover {
+  border-color: blue;
+}
+.betaStoresCenter:hover {
+  border-color: blue;
+}
+.betaStores2Center:hover {
+  border-color: blue;
+}
+.bishkekParkCenter:hover {
+  border-color: blue;
+}
+.cumStore:hover {
+  border-color: blue;
+}
+.dordoiPlazaStore:hover {
+  border-color: blue;
+}
+.gumStore:hover {
+  border-color: blue;
+}
+#linkStore.hover {
+  color: blue;
+}
+.catalogList {
+  width: 236px;
+  background-color: rgb(202, 199, 199);
+}
+.titleList {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.productList .products {
+  padding: 7px 0px 0px 0px;
+}
+.products {
+  font-size: 17px;
+  font-weight: 500;
+  color: black;
+  list-style: none;
+}
+.underwearCloths .outerwearClothes .religious {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.religious.outerwearClothes .underwearCloths {
+  padding: 14px 0px 7px 0px;
+}
+.liClass {
+  text-decoration: none;
+  color: black;
+}
+
+ul li {
+  text-decoration: none;
+  list-style: none;
+}
+.subclasses {
+  font-size: 15px;
+  font-weight: 400;
+}
+.catalogArea {
+  width: 99%;
+  border: 1px solid firebrick;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto;
+}
+.catalogpictArea {
+  display: flex;
+  width: 78%;
+  border: 1px solid black;
+  flex-flow: row wrap;
+}
+.cotalogListArea {
+  width: 21%;
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row wrap;
+}
+.pageAccount {
+  width: 98%;
+  height: 50%;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+.headerBlock {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 98%;
+  height: 10%;
+}
+.accountText {
+  margin: 8px 0px;
+  width: 19%;
+}
+.pageAccountContainer {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  flex-flow: column wrap;
+}
+.insideContainers {
+  display: flex;
+  justify-content: center;
+  padding: 3px 0px 8px 0px;
+}
+.textContent {
+  display: flex;
+  justify-content: end;
+  color: grey;
+}
+
+.containerP2 {
+  margin-left: 16.1%;
+}
+.containerP3 {
+  margin-left: 0.8%;
+}
+.containerP4 {
+  margin-left: 12.3%;
+}
+.containerP5 {
+  margin-left: 9.2%;
+}
+.addTheAD {
+  margin: 8px 0px;
+}
+.rulles {
+  width: 443px;
+  border: 1px solid black;
+  margin: 0 auto;
+  background-color: skyblue;
+  color: white;
+  border-radius: 9px;
+  margin-bottom: 47px;
+}
+.textAddress {
+  margin-left: 79px;
+}
+.priceList {
+  display: flex;
+  flex-flow: column wrap;
+}
+.aboutPrice {
+  margin-left: 63px;
+}
+.nameBrandTitle {
+  margin-left: 89px;
+}
+.namedBrand {
+  width: 190px;
+}
+.propertiesMade {
+  margin-left: 82px;
+}
+.countryProduced {
+  margin-left: -36px;
+}
+.widthHeight {
+  margin-left: -42px;
+}
+.periodeOfDiscount {
+  margin-left: -23px;
+}
+.preriodeDates {
+  display: flex;
+  flex-flow: column wrap;
+}
+.goodsTrascripts {
+  margin-left: -61px;
+}
+.uploadPhoto {
+  margin-left: 17px;
+}
+.categoryForm {
+  margin-left: 50px;
+}
+.categoriList {
+  width: 194px;
+}
+.butContainer {
+  display: flex;
+  justify-content: center;
+  margin-left: 93px;
+}
+.sendToServer {
+  background-color: red;
+  color: white;
+  border-radius: 7px;
+}

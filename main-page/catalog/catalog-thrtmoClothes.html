@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>catalog -underwear-page</title>
+    <link
+      rel="stylesheet"
+      href="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/css/style.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="containerDiscountMP">
+      <div class="content">
+        <nav class="navMenu">
+          <ul class="textMenu">
+            <div class="container-menu">
+              <img
+                class="mall-pict"
+                src="/Users/Alexander/Desktop/JavaScript/project/projectWeb/test5/images/superstoreMarker.png"
+                alt=""
+              />
+              <li class="textMenu-link-shops">
+                <a href="#" class="link-sale-amenities" id="linkStore"
+                  >ТОРГОВЫЕ ЦЕНТРЫ</a
+                >
+                <ul class="subMenu">
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\asia-mol\asiaMol.html"
+                      >АЗИЯ-МОЛ</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\ai-mol\aimol.html"
+                      >АЙ-МОЛ</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\beta-stores\betaStores.html"
+                      >БЕТА-СТОРЕС
+                    </a>
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\beta-stores2\betaStores-2.html"
+                      >БЕТА-СТОРЕС 2</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\dordoiplaza\dordoi-Plaza.html"
+                      >ДОРДОЙ ПЛАЗА</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\cumStore.html"
+                      >ЦУМ</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\gum-store\gum.html"
+                      >ГУМ</a
+                    >
+                  </li>
+                  <li class="sub-menu">
+                    <a
+                      class="textSub"
+                      href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\bishkek-park\bishkek-park.html"
+                      >БИШКЕК ПАРК
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </div>
+            <div class="container-menu">
+              <img
+                class="shop-pict"
+                src="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\images\shopsmarket.png"
+                alt=""
+              />
+              <li class="textMenu-link-shops text-shop">
+                <a href="#" class="link-sale-amenities">МАГАЗИНЫ</a>
+              </li>
+            </div>
+            <div class="container-menu">
+              <img
+                class="furniture-pict"
+                src="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\images\furniture.png"
+                alt=""
+              />
+              <li class="textMenu-link-shops fur-text">
+                <a href="#" class="link-sale-amenities">МЕБЕЛЬ</a>
+              </li>
+            </div>
+            <div class="container-menu">
+              <img
+                class="supermarkets-pict"
+                src="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\images\superstoreMarker.png"
+                alt=""
+              />
+              <li class="textMenu-link-shops superM-text">
+                <a href="#" class="link-sale-amenities">СУПЕРМАРКЕТЫ</a>
+              </li>
+            </div>
+             <div class="btnReg">
+                        <!-- Button reg modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Зарегестрироваться
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Окно регистрации</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="mb-3">
+    <label for="login" class="form-label">Enter Your login/ введите  ваш логи</label>
+    <input type="text" class="form-control" placeholder="my login"  id="login" >
+    
+  </div>
+  
+  <div class="mb-3">
+    <label for="password" class="form-label">My Password</label>
+    <input type="password" class="form-control"  placeholder="my password" id="password">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control"  placeholder="repeat previous password" id="passwordR">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">My Email address</label>
+    <input type="email" class="form-control" id="email" placeholder="my login" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  
+  
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">выйти</button>
+        <button type="button" class="btn btn-primary">Зарегестрироваться</button>
+      </div>
+    </div>
+  </div>
+</div>
+                    </div>
+                    <div class="bntEnter">
+                        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Войти
+</button> 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Окно авторизации</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="mb-3">
+    <label for="login" class="form-label">Enter Your login/ введите  ваш логи</label>
+    <input type="text" class="form-control" placeholder="my login"  id="login" >
+    
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control"  placeholder="my password" id="password">
+  </div>
+  
+  
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">выйти</button>
+        <button type="button" class="btn btn-primary">Войти</button>
+      </div>
+    </div>
+  </div>
+</div>
+                    </div>
+          </ul>
+          <div class="container-cotalog-searchPannel">
+            <div class="leftSide-pannel">
+              <span class="catalog">КАТАЛОГ:</span>
+              <div class="searchSymbl-container">
+                <a href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalog.html"
+                  ><img
+                    src="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\images\searchSyml 6.png"
+                    alt=""
+                    class="symblS"
+                /></a>
+              </div>
+            </div>
+            <div class="rightSide-pannel">
+              <div class="searchPannel">
+                <input
+                  class="searchLine widthLine"
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Я ищу.."
+                />
+                <div class="seachSymbl-container">
+                  <img
+                    src="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\images\searchSmbl.png"
+                    alt=""
+                    class="pngFile"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="catalogArea">
+            <div class="cotalogListArea">
+                <div class="catalogList">
+                    <ul class="productList">
+                      <span class="titleList">КАТАЛОГ:</span>
+                      <li class="products "><a class="liClass underwearClothes " href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalog-underwear.html">Бельё</a>
+                        <ul class="subUnderwear">
+                          <li class="underwearCloths"></li><a class="liClass subclasses"  href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalog-carset.html">Боди и карсеты</a></li>
+                          <li class="underwearCloths"></li><a class="liClass subclasses" href="#">Бюсгалетры  и бюстье</a></li>
+                          <li class="underwearCloths"></li><a class="liClass subclasses" href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalog-pantyhoose.html">Колготки и чулки</a></li>
+                          <li class="underwearCloths"></li><a class="liClass subclasses" href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalog-thrtmoClothes.html" style="color:black;background-color: beige;">Термобельё</a></li>
+                          <li class="underwearCloths"></li><a class="liClass subclasses" href="#">Майки и трусы</a></li>
+                        </ul>
+                      </li>
+                      <li class="products"><a class="liClass" href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalogTshirt.html">Блузки и рубашки</a>
+                        <ul class="subTshirts">
+                          <li class="trousers"><a class="liClass subclasses" href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalog-trousers.html">Брюки</a></li>
+                        </ul>
+                      </li>
+                      <li class="products"><a class="liClass" href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalogWarmclothes.html">Верхняя Одежда</a>
+                        <ul class="subOuterwear">
+                          <li class="outerwearClothes"><a class="liClass subclasses" href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\main-page\catalog\catalogAnorak.html">Анорак</a></li>
+                          <li class="outerwearClothes"><a class="liClass subclasses" href="#">Ветровка</a></li>
+                          <li class="outerwearClothes"><a class="liClass subclasses" href="#">Дублёнка</a></li>
+                          <li class="outerwearClothes"><a class="liClass subclasses" href="#">Куртка</a></li>
+                          <li class="outerwearClothes"><a class="liClass subclasses" href="#">Пальто</a></li>
+                          <li class="outerwearClothes"><a class="liClass subclasses" href="#">Плащь</a></li>
+                          <li class="outerwearClothes"><a class="liClass subclasses" href="#">Пуховик</a></li>
+                          <li class="outerwearClothes"><a class="liClass subclasses" href="#">Шуба</a></li>
+                        </ul>
+                      </li>
+                      <li class="products"><a class="liClass" href="#">Водолазки</a></li>
+                      <li class="products"><a class="liClass" href="#">Джемперы</a></li>
+                      <li class="products"><a class="liClass" href="#">Джинсы</a></li>
+                      <li class="products"><a class="liClass" href="#">Кардиганы</a></li>
+                      <li class="products"><a class="liClass" href="#">Комбинизоны</a></li>
+                      <li class="products"><a class="liClass" href="#">Костюмы</a></li>
+                      <li class="products"><a class="liClass" href="#">Купальные костюмы</a></li>
+                      <li class="products"><a class="liClass" href="#">Лонголивы</a></li>
+                      <li class="products"><a class="liClass" href="#">Мантии</a></li>
+                      <li class="products"><a class="liClass" href="#">Пиджаки и жакеты</a></li>
+                      <li class="products"><a class="liClass" href="#">Платья и сарафаны</a></li>
+                      <li class="products"><a class="liClass" href="#">Религиозная</a>
+                        <ul class="religiou">
+                          <li class="religious"><a class="liClass subclasses" href="#">Ислам</a></li>
+                          <li class="religious"><a class="liClass subclasses" href="#">Христианин</a>
+                          </li>
+                        </ul>                
+                      </li>              
+                      <li class="products"> <a class="liClass" href="#">Спорт</a></li>
+                      <li class="products"><a class="liClass" href="#">Свитшоты</a></li>
+                      <li class="products"><a class="liClass" href="#">Свадебные платья</a></li>
+                      <li class="products"><a class="liClass" href="#">Толстовки</a></li>
+                      <li class="products"><a class="liClass" href="#">Туники</a></li>
+                      <li class="products"><a class="liClass" href="#">Футболки и топы</a></li>
+                      <li class="products"><a class="liClass" href="#">Худи</a> </li>
+                    </ul>
+                  </div>
+            </div>
+            <div class="catalogpictArea">
+         
+                <div class="product-image clothes8">
+                    <div class="images">
+                      <a
+                        href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\butiques\offPrice\cum-keddo-prod\cum-offpriceGood8.html"
+                        class=""
+                      >
+                        <img
+                          class="photoClothes"
+                          src="https://images.ua.prom.st/2851681632_w640_h640_2851681632.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="productTranscription">
+                      <div class="priceNow" id="">
+                        <span class="currentPrice" id=""> 5000 сом </span>
+                      </div>
+                      <div class="priceWas">
+                        <span class="previousPrice" id=""> 5899 сом </span>
+                      </div>
+                      <div class="discount">
+                        <span class="discount-number" id=""> -20% </span>
+                      </div>
+                      <div class="goodsDescriptions">
+                        <span class="goodsTenses" id="productDiscr">
+                          термобельё
+                        </span>
+                      </div>
+                      <div class="whereIsSell">
+                        <span class="salesBuilding" id=""> ЦУМ бутик #45 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-image clothes7">
+                    <div class="images">
+                      <a
+                        href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\butiques\offPrice\cum-keddo-prod\cum-offprice-good7.html"
+                        class=""
+                      >
+                        <img
+                          class="photoClothes"
+                          src="https://sport-marafon.ru/upload/blog/img/14/1424-002.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="productTranscription">
+                      <div class="priceNow" id="">
+                        <span class="currentPrice" id=""> 3000 сом </span>
+                      </div>
+                      <div class="priceWas">
+                        <span class="previousPrice" id=""> 3899 сом </span>
+                      </div>
+                      <div class="discount">
+                        <span class="discount-number" id=""> -20% </span>
+                      </div>
+                      <div class="goodsDescriptions">
+                        <span class="goodsTenses" id="productDiscr">
+                          Термобельё
+                        </span>
+                      </div>
+                      <div class="whereIsSell">
+                        <span class="salesBuilding" id=""> ЦУМ бутик #45 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-image clothes8">
+                    <div class="images">
+                      <a
+                        href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\butiques\offPrice\cum-keddo-prod\cum-offpriceGood8.html"
+                        class=""
+                      >
+                        <img
+                          class="photoClothes"
+                          src="https://images.ua.prom.st/2851681632_w640_h640_2851681632.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="productTranscription">
+                      <div class="priceNow" id="">
+                        <span class="currentPrice" id=""> 5000 сом </span>
+                      </div>
+                      <div class="priceWas">
+                        <span class="previousPrice" id=""> 5899 сом </span>
+                      </div>
+                      <div class="discount">
+                        <span class="discount-number" id=""> -20% </span>
+                      </div>
+                      <div class="goodsDescriptions">
+                        <span class="goodsTenses" id="productDiscr">
+                          термобельё
+                        </span>
+                      </div>
+                      <div class="whereIsSell">
+                        <span class="salesBuilding" id=""> ЦУМ бутик #45 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-image clothes7">
+                    <div class="images">
+                      <a
+                        href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\butiques\offPrice\cum-keddo-prod\cum-offprice-good7.html"
+                        class=""
+                      >
+                        <img
+                          class="photoClothes"
+                          src="https://sport-marafon.ru/upload/blog/img/14/1424-002.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="productTranscription">
+                      <div class="priceNow" id="">
+                        <span class="currentPrice" id=""> 3000 сом </span>
+                      </div>
+                      <div class="priceWas">
+                        <span class="previousPrice" id=""> 3899 сом </span>
+                      </div>
+                      <div class="discount">
+                        <span class="discount-number" id=""> -20% </span>
+                      </div>
+                      <div class="goodsDescriptions">
+                        <span class="goodsTenses" id="productDiscr">
+                          Термобельё
+                        </span>
+                      </div>
+                      <div class="whereIsSell">
+                        <span class="salesBuilding" id=""> ЦУМ бутик #45 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-image clothes8">
+                    <div class="images">
+                      <a
+                        href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\butiques\offPrice\cum-keddo-prod\cum-offpriceGood8.html"
+                        class=""
+                      >
+                        <img
+                          class="photoClothes"
+                          src="https://images.ua.prom.st/2851681632_w640_h640_2851681632.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="productTranscription">
+                      <div class="priceNow" id="">
+                        <span class="currentPrice" id=""> 5000 сом </span>
+                      </div>
+                      <div class="priceWas">
+                        <span class="previousPrice" id=""> 5899 сом </span>
+                      </div>
+                      <div class="discount">
+                        <span class="discount-number" id=""> -20% </span>
+                      </div>
+                      <div class="goodsDescriptions">
+                        <span class="goodsTenses" id="productDiscr">
+                          термобельё
+                        </span>
+                      </div>
+                      <div class="whereIsSell">
+                        <span class="salesBuilding" id=""> ЦУМ бутик #45 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-image clothes7">
+                    <div class="images">
+                      <a
+                        href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\butiques\offPrice\cum-keddo-prod\cum-offprice-good7.html"
+                        class=""
+                      >
+                        <img
+                          class="photoClothes"
+                          src="https://sport-marafon.ru/upload/blog/img/14/1424-002.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="productTranscription">
+                      <div class="priceNow" id="">
+                        <span class="currentPrice" id=""> 3000 сом </span>
+                      </div>
+                      <div class="priceWas">
+                        <span class="previousPrice" id=""> 3899 сом </span>
+                      </div>
+                      <div class="discount">
+                        <span class="discount-number" id=""> -20% </span>
+                      </div>
+                      <div class="goodsDescriptions">
+                        <span class="goodsTenses" id="productDiscr">
+                          Термобельё
+                        </span>
+                      </div>
+                      <div class="whereIsSell">
+                        <span class="salesBuilding" id=""> ЦУМ бутик #45 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-image clothes8">
+                    <div class="images">
+                      <a
+                        href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\butiques\offPrice\cum-keddo-prod\cum-offpriceGood8.html"
+                        class=""
+                      >
+                        <img
+                          class="photoClothes"
+                          src="https://images.ua.prom.st/2851681632_w640_h640_2851681632.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="productTranscription">
+                      <div class="priceNow" id="">
+                        <span class="currentPrice" id=""> 5000 сом </span>
+                      </div>
+                      <div class="priceWas">
+                        <span class="previousPrice" id=""> 5899 сом </span>
+                      </div>
+                      <div class="discount">
+                        <span class="discount-number" id=""> -20% </span>
+                      </div>
+                      <div class="goodsDescriptions">
+                        <span class="goodsTenses" id="productDiscr">
+                          термобельё
+                        </span>
+                      </div>
+                      <div class="whereIsSell">
+                        <span class="salesBuilding" id=""> ЦУМ бутик #45 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product-image clothes7">
+                    <div class="images">
+                      <a
+                        href="C:\Users\Alexander\Desktop\JavaScript\project\projectWeb\test5\cum-store\butiques\offPrice\cum-keddo-prod\cum-offprice-good7.html"
+                        class=""
+                      >
+                        <img
+                          class="photoClothes"
+                          src="https://sport-marafon.ru/upload/blog/img/14/1424-002.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="productTranscription">
+                      <div class="priceNow" id="">
+                        <span class="currentPrice" id=""> 3000 сом </span>
+                      </div>
+                      <div class="priceWas">
+                        <span class="previousPrice" id=""> 3899 сом </span>
+                      </div>
+                      <div class="discount">
+                        <span class="discount-number" id=""> -20% </span>
+                      </div>
+                      <div class="goodsDescriptions">
+                        <span class="goodsTenses" id="productDiscr">
+                          Термобельё
+                        </span>
+                      </div>
+                      <div class="whereIsSell">
+                        <span class="salesBuilding" id=""> ЦУМ бутик #45 </span>
+                      </div>
+                    </div>
+                  </div>
+
+      
+                
+          </div>
+        </div>
+        <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
