@@ -65,7 +65,7 @@ try {
         exit 1
     }
 
-    Write-Log 'No updates — compliant.'
+    Write-Log 'No updates - compliant.'
     exit 0
 }
 catch {
