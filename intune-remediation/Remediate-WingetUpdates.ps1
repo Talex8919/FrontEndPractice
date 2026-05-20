@@ -17,7 +17,6 @@ $LogFile = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\WingetUpgr
 # These are typically self-updating, cause reboots, or are managed elsewhere.
 $ExcludeList = @(
     'Microsoft.Teams'               # Self-updating; MSI installs handled by M365
-    'Microsoft.Edge'                # Managed via Intune/ADMX policy
     'Microsoft.EdgeWebView2Runtime' # Edge-managed component
     'Microsoft.PowerBI'             # Managed via separate Intune app deployment
 )
