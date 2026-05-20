@@ -65,7 +65,6 @@ function Invoke-WingetUpgrade {
         '--accept-source-agreements'
         '--accept-package-agreements'
         '--silent'
-        '--scope', 'machine'    # Prefer machine-scope installs; falls back gracefully
         '--force'               # Overwrite a running version where the installer allows it
         '--disable-interactivity'
     )
