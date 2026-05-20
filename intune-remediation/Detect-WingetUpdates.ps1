@@ -55,20 +55,12 @@ try {
     $output = & $winget upgrade --include-unknown --accept-source-agreements 2>&1
     Write-Log "winget output: $($output -join ' | ')"
 
-    # A table row means at least one upgrade is available
-    $hasUpdates = $output | Where-Object {
-        $_ -match '^\S+.*\S+.*\S+.*\S+' -and
-        $_ -notmatch '^Name' -and
-        $_ -notmatch '^-' -and
-        $_ -notmatch 'upgrades available' -and
-        $_ -notmatch 'No applicable'
-    }
-
-    # Also catch the summary line "X upgrades available"
+    # Winget always prints "X upgrades available." when updates exist.
+    # Everything else (spinners, "No installed package found", "No applicable update") means compliant.
     $summaryLine = $output | Where-Object { $_ -match '\d+\s+upgrade' }
 
-    if ($hasUpdates -or $summaryLine) {
-        Write-Log 'Updates found — non-compliant.'
+    if ($summaryLine) {
+        Write-Log "Updates found — non-compliant. ($summaryLine)"
         exit 1
     }
 
