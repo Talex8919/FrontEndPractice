@@ -94,7 +94,7 @@ try {
 
     $winget = Find-Winget
     if (-not $winget) {
-        Write-Log 'winget not found — cannot remediate.'
+        Write-Log 'winget not found - cannot remediate.'
         exit 1
     }
     Write-Log "winget path: $winget"
@@ -110,7 +110,7 @@ try {
     if ($failures) {
         Write-Log "Completed with warnings/failures:"
         $failures | ForEach-Object { Write-Log "  WARN: $_" }
-        # Still exit 0 — partial upgrades are better than a reported failure loop.
+        # Still exit 0 - partial upgrades are better than a reported failure loop.
         # Change to exit 1 if you want Intune to keep retrying on any error.
         exit 0
     }

@@ -7,8 +7,8 @@
 .NOTES
     Run As: SYSTEM
     Architecture: 64-bit
-    Exit 0  = Compliant   (no updates or winget unavailable — nothing to do)
-    Exit 1  = Non-Compliant (updates found — trigger remediation)
+    Exit 0  = Compliant   (no updates or winget unavailable - nothing to do)
+    Exit 1  = Non-Compliant (updates found - trigger remediation)
 #>
 
 $LogFile = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\WingetUpgrade-Detection.log"
@@ -46,7 +46,7 @@ try {
 
     $winget = Find-Winget
     if (-not $winget) {
-        Write-Log 'winget not found — marking compliant (nothing to remediate).'
+        Write-Log 'winget not found - marking compliant (nothing to remediate).'
         exit 0
     }
     Write-Log "winget path: $winget"
@@ -57,10 +57,11 @@ try {
 
     # Winget always prints "X upgrades available." when updates exist.
     # Everything else (spinners, "No installed package found", "No applicable update") means compliant.
+
     $summaryLine = $output | Where-Object { $_ -match '\d+\s+upgrade' }
 
     if ($summaryLine) {
-        Write-Log "Updates found — non-compliant. ($summaryLine)"
+        Write-Log "Updates found - non-compliant. ($summaryLine)"
         exit 1
     }
 
