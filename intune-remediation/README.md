@@ -44,9 +44,9 @@ winget upgrade --all
 These are pinned out of `--all` to avoid conflicts with other management channels:
 
 - `Microsoft.Teams` — self-updating / M365 managed
-- `Microsoft.OneDrive` — self-updating
 - `Microsoft.Edge` — managed via Intune/ADMX policy
 - `Microsoft.EdgeWebView2Runtime` — Edge-managed component
+- `Microsoft.PowerBI` — managed via separate Intune app deployment
 
 Add any MSI/EXE that requires a reboot or is deployed via another Intune app policy.
 
