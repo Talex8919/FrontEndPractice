@@ -65,7 +65,6 @@ function Invoke-WingetUpgrade {
         '--accept-source-agreements'
         '--accept-package-agreements'
         '--silent'
-        '--force'               # Overwrite a running version where the installer allows it
         '--disable-interactivity'
     )
 
