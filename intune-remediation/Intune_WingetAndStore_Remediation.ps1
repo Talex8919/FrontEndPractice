@@ -91,45 +91,80 @@ try {
         # --- Step 1b: Force-update Store apps via winget msstore source ---
         Write-Log '--- Step 1b: winget upgrade --source msstore ---'
 
-        # Check which Store apps have pending updates
+        # Get ALL pending Store updates dynamically
         $msCheckOutput = & $winget upgrade --source msstore --include-unknown --accept-source-agreements 2>&1
 
-        # Parse display names from the winget table (first column of rows ending with 'msstore')
-        $pendingStoreApps = $msCheckOutput | Where-Object { $_ -match 'msstore\s*$' } | ForEach-Object {
-            ($_ -split '\s{2,}')[0].Trim()
-        } | Where-Object { $_ }
+        # Parse display name + Store ID from every table row ending with 'msstore'
+        $pendingStoreUpdates = $msCheckOutput | Where-Object { $_ -match 'msstore\s*$' } | ForEach-Object {
+            $cols = $_ -split '\s{2,}'
+            if ($cols.Count -ge 2) {
+                [PSCustomObject]@{ Name = $cols[0].Trim(); Id = $cols[1].Trim() }
+            }
+        } | Where-Object { $_ -and $_.Name }
 
-        if ($pendingStoreApps) {
-            Write-Log "Store apps needing update: $($pendingStoreApps -join ', ')"
+        if ($pendingStoreUpdates) {
+            Write-Log "Store apps needing update: $($pendingStoreUpdates.Name -join ', ')"
 
-            foreach ($appName in $pendingStoreApps) {
-                # Match the display name to an AppX package (fuzzy: spaces -> wildcard)
-                $searchName = $appName -replace '\s+', '*'
-                $appxPkg = Get-AppxPackage -AllUsers -ErrorAction SilentlyContinue |
-                    Where-Object { $_.Name -like "*$searchName*" } |
-                    Select-Object -First 1
+            # Load all AppX packages once to avoid repeated slow calls
+            $allAppx = Get-AppxPackage -AllUsers -ErrorAction SilentlyContinue
 
-                if ($appxPkg -and $appxPkg.InstallLocation -and (Test-Path $appxPkg.InstallLocation)) {
-                    # Find any running processes whose exe lives inside this package folder
-                    $runningProcs = Get-Process -ErrorAction SilentlyContinue | Where-Object {
-                        try { $_.Path -like "$($appxPkg.InstallLocation)*" } catch { $false }
+            foreach ($update in $pendingStoreUpdates) {
+                $displayName = $update.Name
+                $appxPkg     = $null
+
+                # Strategy 1: remove spaces from display name and match package name
+                # e.g. "Windows Notepad" -> *WindowsNotepad*
+                $noSpaces = $displayName -replace '\s+', ''
+                $appxPkg  = $allAppx | Where-Object { $_.Name -like "*$noSpaces*" } | Select-Object -First 1
+
+                # Strategy 2: every significant word (>3 chars) must appear in the package name
+                # e.g. "Python Install Manager" -> Name contains "Python" AND "Install" AND "Manager"
+                if (-not $appxPkg) {
+                    $words   = $displayName -split '\s+' | Where-Object { $_.Length -gt 3 }
+                    if ($words) {
+                        $appxPkg = $allAppx | Where-Object {
+                            $pkg = $_
+                            ($words | Where-Object { $pkg.Name -notlike "*$_*" }).Count -eq 0
+                        } | Select-Object -First 1
                     }
-                    foreach ($proc in $runningProcs) {
-                        Write-Log "Force-closing '$($proc.Name)' (PID $($proc.Id)) - app in use: $appName"
-                        Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
-                    }
-                    if ($runningProcs) { Start-Sleep -Seconds 2 }
                 }
-                else {
-                    Write-Log "No running processes found for: $appName"
+
+                # Strategy 3: first significant word only (broadest fallback)
+                if (-not $appxPkg) {
+                    $firstWord = $displayName -split '\s+' | Where-Object { $_.Length -gt 4 } | Select-Object -First 1
+                    if ($firstWord) {
+                        $appxPkg = $allAppx | Where-Object { $_.Name -like "*$firstWord*" } | Select-Object -First 1
+                    }
+                }
+
+                if ($appxPkg -and $appxPkg.InstallLocation -and
+                    (Test-Path $appxPkg.InstallLocation -ErrorAction SilentlyContinue)) {
+
+                    $installPath  = $appxPkg.InstallLocation.TrimEnd('\')
+                    $runningProcs = Get-Process -ErrorAction SilentlyContinue | Where-Object {
+                        try {
+                            $_.Path -and $_.Path.StartsWith($installPath, [System.StringComparison]::OrdinalIgnoreCase)
+                        } catch { $false }
+                    }
+
+                    if ($runningProcs) {
+                        foreach ($proc in $runningProcs) {
+                            Write-Log "Force-closing '$($proc.Name)' (PID $($proc.Id)) for update: $displayName"
+                            Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
+                        }
+                        Start-Sleep -Seconds 2
+                    } else {
+                        Write-Log "Not running: $displayName (matched package: $($appxPkg.Name))"
+                    }
+                } else {
+                    Write-Log "Could not match AppX package for: $displayName (Store ID: $($update.Id))"
                 }
             }
-        }
-        else {
+        } else {
             Write-Log 'No pending Store app updates found.'
         }
 
-        # Run the Store upgrade now that blocking processes are closed
+        # Run the Store upgrade - all blocking processes are now closed
         $msStoreArgs = @(
             'upgrade'
             '--all'
