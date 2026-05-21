@@ -50,7 +50,7 @@ $DecisionCsv = Join-Path $LogRoot "Detection-Decisions-$Stamp.csv"
 function Write-Log {
     param([Parameter(Mandatory)][string]$Message)
     $Line = "$(Get-Date -Format s) $Message"
-    Write-Output $Line
+    Write-Host $Line
     Add-Content -Path $LogPath -Value $Line -Encoding UTF8
 }
 
