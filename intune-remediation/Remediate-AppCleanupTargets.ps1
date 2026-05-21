@@ -310,7 +310,7 @@ function Stop-TargetProcesses {
 
         $ShouldStop = $false
         foreach ($Pattern in $TargetProcessPatterns) {
-            if ($ProcessName -like $Pattern -or $ProcessPath -like "*$Pattern*") {
+            if ($ProcessName -like $Pattern) {
                 $ShouldStop = $true
                 break
             }
@@ -345,7 +345,12 @@ $Before | Sort-Object Type, Name, PackageFullName | Export-Csv -Path $BeforeCsv 
 Write-Log "Targets before remediation: $($Before.Count)"
 Write-Log "Before CSV: $BeforeCsv"
 
-Stop-TargetProcesses
+if ($Before.Count -gt 0) {
+    Stop-TargetProcesses
+}
+else {
+    Write-Log "No targets to remove; skipping process termination."
+}
 
 foreach ($Package in ($Before | Where-Object { $_.Type -eq "InstalledAppxPackage" } | Sort-Object PackageFullName -Unique)) {
     Write-Log "Removing installed Appx package: $($Package.PackageFullName)"
