@@ -50,7 +50,16 @@ try {
     if ($winget) {
         Write-Log "winget path: $winget"
         $output = & $winget upgrade --include-unknown --accept-source-agreements 2>&1
-        Write-Log "winget output: $($output -join ' | ')"
+
+        # Strip progress bars, spinner chars and blank lines before logging
+        $cleanOutput = $output | Where-Object {
+            $_ -and
+            $_ -notmatch '^\s*[-\\|/]\s*$' -and
+            $_ -notmatch '%\s*\|' -and
+            $_ -notmatch 'KB\s*/\s*\d' -and
+            $_ -notmatch '^\s+$'
+        }
+        Write-Log "winget output: $($cleanOutput -join ' | ')"
 
         $summaryLine = $output | Where-Object { $_ -match '\d+\s+upgrade' }
         if ($summaryLine) {
