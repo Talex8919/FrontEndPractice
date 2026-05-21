@@ -2,18 +2,26 @@
 <#
 .SYNOPSIS
     Intune Proactive Remediation - Detection Script
-    Checks for pending winget upgrades OR if Store remediation is overdue.
+    Checks for pending winget, Microsoft Store, or Microsoft 365 updates,
+    and whether scheduled maintenance (AppX re-registration, Store cache
+    reset) is overdue.
 
 .NOTES
     Run As: SYSTEM
     Architecture: 64-bit
-    Exit 0 = Compliant   (no winget updates and Store remediation is current)
+    Exit 0 = Compliant   (nothing to update, maintenance is current)
     Exit 1 = Non-Compliant (trigger remediation)
+
+    Checks performed:
+      1. winget updates available (all sources incl. msstore)
+      2. Microsoft Store app updates (msstore source explicitly)
+      3. Microsoft 365 pending update (registry AvailableVersion vs VersionToReport)
+      4. Scheduled maintenance overdue (timestamp > MaxDaysSinceLastRun days)
 #>
 
 $LogFile       = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\Intune_WingetAndStore_Detection.log"
 $TimestampFile = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\Intune_WingetAndStore_LastRun.txt"
-$MaxDaysSinceStoreRemediation = 7   # Re-run Store steps even if no winget updates
+$MaxDaysSinceLastRun = 7   # Force full maintenance cycle every 7 days
 
 function Write-Log {
     param([string]$Message)
@@ -42,54 +50,96 @@ function Find-Winget {
     return $null
 }
 
+function Get-CleanWingetOutput {
+    param([string[]]$Output)
+    $Output | Where-Object {
+        $_ -and
+        $_ -notmatch '^\s*[-\\|/]\s*$' -and
+        $_ -notmatch '%\s*\|' -and
+        $_ -notmatch 'KB\s*/\s*\d' -and
+        $_ -notmatch '^\s+$'
+    }
+}
+
 try {
     Write-Log '=== Detection start ==='
 
-    # --- Check 1: Winget updates available ---
+    # ----------------------------------------------------------
+    # Check 1: winget updates (all sources including msstore)
+    # ----------------------------------------------------------
     $winget = Find-Winget
     if ($winget) {
         Write-Log "winget path: $winget"
-        $output = & $winget upgrade --include-unknown --accept-source-agreements 2>&1
-
-        # Strip progress bars, spinner chars and blank lines before logging
-        $cleanOutput = $output | Where-Object {
-            $_ -and
-            $_ -notmatch '^\s*[-\\|/]\s*$' -and
-            $_ -notmatch '%\s*\|' -and
-            $_ -notmatch 'KB\s*/\s*\d' -and
-            $_ -notmatch '^\s+$'
-        }
+        $output      = & $winget upgrade --include-unknown --accept-source-agreements 2>&1
+        $cleanOutput = Get-CleanWingetOutput $output
         Write-Log "winget output: $($cleanOutput -join ' | ')"
 
         $summaryLine = $output | Where-Object { $_ -match '\d+\s+upgrade' }
         if ($summaryLine) {
-            Write-Log "Winget updates found - non-compliant. ($summaryLine)"
+            Write-Log "winget updates found - non-compliant. ($($summaryLine.Trim()))"
             exit 1
         }
         Write-Log 'No winget updates found.'
+
+        # ----------------------------------------------------------
+        # Check 2: Microsoft Store app updates (msstore source)
+        # ----------------------------------------------------------
+        $msOutput      = & $winget upgrade --source msstore --include-unknown --accept-source-agreements 2>&1
+        $msCleanOutput = Get-CleanWingetOutput $msOutput
+        Write-Log "msstore output: $($msCleanOutput -join ' | ')"
+
+        $msSummary = $msOutput | Where-Object { $_ -match '\d+\s+upgrade' }
+        if ($msSummary) {
+            $pendingApps = $msOutput | Where-Object { $_ -match 'msstore\s*$' } |
+                ForEach-Object { ($_ -split '\s{2,}')[0].Trim() }
+            Write-Log "Store app updates found - non-compliant. Apps: $($pendingApps -join ', ')"
+            exit 1
+        }
+        Write-Log 'No Microsoft Store app updates found.'
     }
     else {
-        Write-Log 'winget not found - skipping winget check.'
+        Write-Log 'winget not found - skipping winget and Store checks.'
     }
 
-    # --- Check 2: Store remediation overdue ---
-    if (Test-Path $TimestampFile) {
-        $raw      = Get-Content $TimestampFile -Raw
-        $lastRun  = [datetime]::Parse($raw.Trim())
-        $daysSince = ((Get-Date) - $lastRun).TotalDays
-        Write-Log "Last Store remediation: $($lastRun.ToString('yyyy-MM-dd HH:mm:ss')) ($([math]::Round($daysSince,1)) days ago)"
+    # ----------------------------------------------------------
+    # Check 3: Microsoft 365 pending update (Click-to-Run)
+    # ----------------------------------------------------------
+    $c2rConfig  = 'HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration'
+    $c2rUpdates = 'HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Updates'
 
-        if ($daysSince -gt $MaxDaysSinceStoreRemediation) {
-            Write-Log "Store remediation overdue - non-compliant."
+    if (Test-Path $c2rConfig) {
+        $currentVer   = (Get-ItemProperty $c2rConfig  -ErrorAction SilentlyContinue).VersionToReport
+        $availableVer = (Get-ItemProperty $c2rUpdates -ErrorAction SilentlyContinue).AvailableVersion
+
+        if ($availableVer -and $availableVer -ne $currentVer) {
+            Write-Log "Microsoft 365 update available - non-compliant. Current: $currentVer -> Available: $availableVer"
+            exit 1
+        }
+        Write-Log "Microsoft 365 is current (version: $currentVer)"
+    }
+    else {
+        Write-Log 'Microsoft 365 (Click-to-Run) not detected on this device.'
+    }
+
+    # ----------------------------------------------------------
+    # Check 4: Scheduled maintenance overdue (AppX, Store cache, M365)
+    # ----------------------------------------------------------
+    if (Test-Path $TimestampFile) {
+        $lastRun   = [datetime]::Parse((Get-Content $TimestampFile -Raw).Trim())
+        $daysSince = [math]::Round(((Get-Date) - $lastRun).TotalDays, 1)
+        Write-Log "Last full remediation: $($lastRun.ToString('yyyy-MM-dd HH:mm:ss')) ($daysSince days ago)"
+
+        if ($daysSince -gt $MaxDaysSinceLastRun) {
+            Write-Log "Maintenance overdue ($daysSince days) - non-compliant."
             exit 1
         }
     }
     else {
-        Write-Log 'No Store remediation timestamp found - non-compliant.'
+        Write-Log 'No remediation timestamp found - non-compliant.'
         exit 1
     }
 
-    Write-Log 'No updates and Store remediation current - compliant.'
+    Write-Log 'All checks passed - compliant.'
     exit 0
 }
 catch {
