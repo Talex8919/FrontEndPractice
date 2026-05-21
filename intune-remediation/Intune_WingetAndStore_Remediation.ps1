@@ -87,6 +87,22 @@ try {
         }
 
         Write-Log 'winget upgrade complete.'
+
+        # --- Step 1b: Force-update Store apps via winget msstore source ---
+        Write-Log '--- Step 1b: winget upgrade --source msstore ---'
+        $msStoreArgs = @(
+            'upgrade'
+            '--all'
+            '--source', 'msstore'
+            '--accept-source-agreements'
+            '--accept-package-agreements'
+            '--silent'
+            '--disable-interactivity'
+        )
+        Write-Log "Running: $winget $($msStoreArgs -join ' ')"
+        $msStoreOutput = & $winget @msStoreArgs 2>&1
+        foreach ($line in $msStoreOutput) { Write-Log "  $line" }
+        Write-Log 'msstore upgrade complete.'
     }
     else {
         Write-Log 'winget not found - skipping winget step.'
