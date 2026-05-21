@@ -56,7 +56,7 @@ function Get-CleanWingetOutput {
         $_ -and
         $_ -notmatch '^\s*[-\\|/]\s*$' -and
         $_ -notmatch '%\s*\|' -and
-        $_ -notmatch 'KB\s*/\s*\d' -and
+        $_ -notmatch '[KMGT]B\s*/\s*[\d.]' -and
         $_ -notmatch '^\s+$'
     }
 }

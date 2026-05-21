@@ -80,7 +80,13 @@ try {
 
         Write-Log "Running: $winget $($wingetArgs -join ' ')"
         $output = & $winget @wingetArgs 2>&1
-        foreach ($line in $output) { Write-Log "  $line" }
+        $output | Where-Object {
+            $_ -and
+            $_ -notmatch '^\s*[-\\|/]\s*$' -and
+            $_ -notmatch '[KMGT]B\s*/\s*[\d.]' -and
+            $_ -notmatch '%\s*\|' -and
+            $_ -notmatch '^\s+$'
+        } | ForEach-Object { Write-Log "  $_" }
 
         foreach ($id in $ExcludeList) {
             & $winget pin remove --id $id 2>&1 | Out-Null
@@ -227,8 +233,15 @@ try {
         Stop-Process -Name 'WinStore.App' -Force -ErrorAction SilentlyContinue
         $wsreset = "$env:SystemRoot\System32\wsreset.exe"
         if (Test-Path $wsreset) {
-            Start-Process -FilePath $wsreset -WindowStyle Hidden -Wait
-            Write-Log 'Store cache reset complete.'
+            $wsProc      = Start-Process -FilePath $wsreset -WindowStyle Hidden -PassThru -ErrorAction Stop
+            $wsCompleted = $wsProc.WaitForExit(60000)   # 60-second timeout - wsreset hangs as SYSTEM
+            if ($wsCompleted) {
+                Write-Log 'Store cache reset complete.'
+            }
+            else {
+                $wsProc.Kill() | Out-Null
+                Write-Log 'Store cache reset timed out (60s) - killed and continuing.'
+            }
         }
         else {
             Write-Log 'wsreset.exe not found - skipping.'
