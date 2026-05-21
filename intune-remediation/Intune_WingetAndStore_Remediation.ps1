@@ -90,6 +90,46 @@ try {
 
         # --- Step 1b: Force-update Store apps via winget msstore source ---
         Write-Log '--- Step 1b: winget upgrade --source msstore ---'
+
+        # Check which Store apps have pending updates
+        $msCheckOutput = & $winget upgrade --source msstore --include-unknown --accept-source-agreements 2>&1
+
+        # Parse display names from the winget table (first column of rows ending with 'msstore')
+        $pendingStoreApps = $msCheckOutput | Where-Object { $_ -match 'msstore\s*$' } | ForEach-Object {
+            ($_ -split '\s{2,}')[0].Trim()
+        } | Where-Object { $_ }
+
+        if ($pendingStoreApps) {
+            Write-Log "Store apps needing update: $($pendingStoreApps -join ', ')"
+
+            foreach ($appName in $pendingStoreApps) {
+                # Match the display name to an AppX package (fuzzy: spaces -> wildcard)
+                $searchName = $appName -replace '\s+', '*'
+                $appxPkg = Get-AppxPackage -AllUsers -ErrorAction SilentlyContinue |
+                    Where-Object { $_.Name -like "*$searchName*" } |
+                    Select-Object -First 1
+
+                if ($appxPkg -and $appxPkg.InstallLocation -and (Test-Path $appxPkg.InstallLocation)) {
+                    # Find any running processes whose exe lives inside this package folder
+                    $runningProcs = Get-Process -ErrorAction SilentlyContinue | Where-Object {
+                        try { $_.Path -like "$($appxPkg.InstallLocation)*" } catch { $false }
+                    }
+                    foreach ($proc in $runningProcs) {
+                        Write-Log "Force-closing '$($proc.Name)' (PID $($proc.Id)) - app in use: $appName"
+                        Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
+                    }
+                    if ($runningProcs) { Start-Sleep -Seconds 2 }
+                }
+                else {
+                    Write-Log "No running processes found for: $appName"
+                }
+            }
+        }
+        else {
+            Write-Log 'No pending Store app updates found.'
+        }
+
+        # Run the Store upgrade now that blocking processes are closed
         $msStoreArgs = @(
             'upgrade'
             '--all'
