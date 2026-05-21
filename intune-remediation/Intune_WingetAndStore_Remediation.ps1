@@ -12,8 +12,8 @@
     Exit 1 = Failure
 #>
 
-$LogFile       = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\WingetStore-Remediation.log"
-$TimestampFile = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\WingetStore-LastRun.txt"
+$LogFile       = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\Intune_WingetAndStore_Remediation.log"
+$TimestampFile = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\Intune_WingetAndStore_LastRun.txt"
 
 # Packages excluded from winget --all (managed elsewhere or self-updating)
 $ExcludeList = @(

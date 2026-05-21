@@ -11,8 +11,8 @@
     Exit 1 = Non-Compliant (trigger remediation)
 #>
 
-$LogFile       = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\WingetStore-Detection.log"
-$TimestampFile = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\WingetStore-LastRun.txt"
+$LogFile       = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\Intune_WingetAndStore_Detection.log"
+$TimestampFile = "$env:ProgramData\Microsoft\IntuneManagementExtension\Logs\Intune_WingetAndStore_LastRun.txt"
 $MaxDaysSinceStoreRemediation = 7   # Re-run Store steps even if no winget updates
 
 function Write-Log {
