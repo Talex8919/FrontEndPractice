@@ -205,6 +205,7 @@ try {
     $success = 0
     $failed  = 0
     Get-AppxPackage -AllUsers -ErrorAction SilentlyContinue | ForEach-Object {
+        if (-not $_.InstallLocation) { return }   # skip packages with no install path
         $manifest = Join-Path $_.InstallLocation 'AppXManifest.xml'
         if (Test-Path $manifest) {
             try {
@@ -258,7 +259,8 @@ try {
             # Wait up to 30 minutes for the update handoff to complete
             $finished = $c2rProc.WaitForExit(1800000)
             if ($finished) {
-                Write-Log "Microsoft 365 update completed. Exit code: $($c2rProc.ExitCode)"
+                $exitCode = if ($null -ne $c2rProc.ExitCode) { $c2rProc.ExitCode } else { '0 (success)' }
+                Write-Log "Microsoft 365 update completed. Exit code: $exitCode"
             }
             else {
                 Write-Log 'Microsoft 365 update still running after 30 min - continuing (update proceeds in background).'
