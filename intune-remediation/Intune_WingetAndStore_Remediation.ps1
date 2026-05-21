@@ -238,6 +238,41 @@ try {
     }
 
     # --------------------------------------------------------
+    # Step 5: Update Microsoft 365 (Click-to-Run)
+    # --------------------------------------------------------
+    Write-Log '--- Step 5: Microsoft 365 update ---'
+    $c2rPaths = @(
+        'C:\Program Files\Common Files\microsoft shared\ClickToRun\OfficeC2RClient.exe'
+        'C:\Program Files (x86)\Common Files\microsoft shared\ClickToRun\OfficeC2RClient.exe'
+    )
+    $c2rClient = $c2rPaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+
+    if ($c2rClient) {
+        Write-Log "OfficeC2RClient path: $c2rClient"
+        try {
+            # forceappshutdown=true closes Word, Excel, Outlook etc. before updating
+            $c2rArgs = '/update user displaylevel=false forceappshutdown=true updatepromptuser=false'
+            Write-Log "Running: $c2rClient $c2rArgs"
+            $c2rProc = Start-Process -FilePath $c2rClient -ArgumentList $c2rArgs -PassThru -NoNewWindow
+
+            # Wait up to 30 minutes for the update handoff to complete
+            $finished = $c2rProc.WaitForExit(1800000)
+            if ($finished) {
+                Write-Log "Microsoft 365 update completed. Exit code: $($c2rProc.ExitCode)"
+            }
+            else {
+                Write-Log 'Microsoft 365 update still running after 30 min - continuing (update proceeds in background).'
+            }
+        }
+        catch {
+            Write-Log "Microsoft 365 update failed: $_"
+        }
+    }
+    else {
+        Write-Log 'OfficeC2RClient.exe not found - Microsoft 365 (Click-to-Run) is not installed on this device.'
+    }
+
+    # --------------------------------------------------------
     # Write timestamp so detection knows remediation ran
     # --------------------------------------------------------
     (Get-Date).ToString('yyyy-MM-dd HH:mm:ss') | Out-File -FilePath $TimestampFile -Encoding utf8 -Force
