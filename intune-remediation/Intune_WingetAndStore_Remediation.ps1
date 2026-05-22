@@ -184,6 +184,34 @@ try {
         $msStoreOutput = & $winget @msStoreArgs 2>&1
         foreach ($line in $msStoreOutput) { Write-Log "  $line" }
         Write-Log 'msstore upgrade complete.'
+
+        # --- Step 1c: Schedule winget msstore upgrade in logged-on user context ---
+        # winget --source msstore requires user context - SYSTEM cannot enumerate Store apps.
+        # We create a one-shot scheduled task that runs as the active user 30s from now.
+        Write-Log '--- Step 1c: Schedule user-context msstore upgrade ---'
+        $loggedOnUser = (Get-CimInstance Win32_ComputerSystem -ErrorAction SilentlyContinue).UserName
+
+        if ($loggedOnUser) {
+            $taskName  = 'Intune_WingetMsStoreUserUpdate'
+            $wingetCmd = 'winget upgrade --all --source msstore --accept-source-agreements --accept-package-agreements --silent --disable-interactivity'
+
+            Unregister-ScheduledTask -TaskName $taskName -Confirm:$false -ErrorAction SilentlyContinue
+
+            $action    = New-ScheduledTaskAction -Execute 'powershell.exe' `
+                             -Argument "-WindowStyle Hidden -NonInteractive -Command `"$wingetCmd`""
+            $trigger   = New-ScheduledTaskTrigger -Once -At (Get-Date).AddSeconds(30)
+            $principal = New-ScheduledTaskPrincipal -UserId $loggedOnUser -LogonType Interactive -RunLevel Limited
+            $settings  = New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Minutes 30) `
+                             -DeleteExpiredTaskAfter (New-TimeSpan -Minutes 5)
+
+            Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger `
+                -Principal $principal -Settings $settings -Force | Out-Null
+
+            Write-Log "Scheduled msstore user-context task for: $loggedOnUser (runs in 30s)"
+        }
+        else {
+            Write-Log 'No logged-on user detected - skipping user-context Store update task.'
+        }
     }
     else {
         Write-Log 'winget not found - skipping winget step.'
